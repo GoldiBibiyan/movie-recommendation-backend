@@ -1,0 +1,4 @@
+# file: /home/abhinav/movie-backend/model.py
+# hypothesis_version: 6.151.9
+
+[5000, 'Director', 'cast', 'crew', 'english', 'genres', 'job', 'keywords', 'model/movie_list.pkl', 'model/similarity.pkl', 'movie_id', 'name', 'overview', 'tags', 'title', 'tmdb_5000_movies.csv', 'wb']
