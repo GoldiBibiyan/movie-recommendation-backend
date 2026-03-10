@@ -71,7 +71,7 @@ vectors = cv.fit_transform(new_df['tags']).toarray()
 similarity = cosine_similarity(vectors)
 #movies = movies.astype(str)
 movies['title'] = movies['title'].astype(str)
-
+os.makedirs('model', exist_ok=True)
 # Save files 
 pickle.dump(new_df.to_dict(), open('model/movie_list.pkl','wb'))
 pickle.dump(similarity, open('model/similarity.pkl','wb'))
