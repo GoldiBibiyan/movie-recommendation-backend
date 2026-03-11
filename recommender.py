@@ -28,8 +28,13 @@ def fetch_poster(movie_title):
         print(f"Error fetching poster: {e}")
     return "https://via.placeholder.com/500x750?text=No+Image"
 
+
+
+from urllib.parse import unquote
+
 def recommend(movie):
     load_models()
+    movie = unquote(movie)
     movie_search = movie.replace(" ", "").strip().lower()
     if movie_search not in movies['title_search'].values:
         return {"error": "Movie not found"}
