@@ -6,7 +6,6 @@ import os
 movies = None
 similarity = None
 API_KEY = "2cc22bbaf340c85980258d47e3f4aead"
-
 MODEL_DIR = os.environ.get("MODEL_DIR", "model")
 
 def load_models():
@@ -48,22 +47,3 @@ def recommend(movie):
             "poster": fetch_poster(movie_title)
         })
     return results
-```
-
----
-
-### ✅ `requirements.txt` (New — Required!)
-```
-fastapi
-uvicorn
-pandas
-numpy
-scikit-learn
-requests
-```
-
----
-
-### ✅ `Procfile` (New — Tells Railway how to start)
-```
-web: uvicorn main:app --host 0.0.0.0 --port $PORT
