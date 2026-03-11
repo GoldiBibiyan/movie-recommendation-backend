@@ -1,4 +1,8 @@
+model/
+__pycache__/
 venv/
+*.pyc
+.envvenv/
 __pycache__/
 *.pyc
 .coverage
