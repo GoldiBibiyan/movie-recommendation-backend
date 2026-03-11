@@ -37,7 +37,7 @@ def recommend(movie):
     movie = unquote(movie)
     movie_search = movie.replace(" ", "").strip().lower()
     if movie_search not in movies['title_search'].values:
-        return {"error": "Movie not found"}
+        return []
     index = movies[movies['title_search'] == movie_search].index[0]
     distances = sorted(
         list(enumerate(similarity[index])),
