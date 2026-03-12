@@ -1,3 +1,4 @@
+from urllib.parse import unquote
 import pickle
 import requests
 import pandas as pd
@@ -8,13 +9,20 @@ similarity = None
 API_KEY = "2cc22bbaf340c85980258d47e3f4aead"
 MODEL_DIR = os.environ.get("MODEL_DIR", "model")
 
+
 def load_models():
     global movies, similarity
     if movies is None:
-        movies = pd.DataFrame(pickle.load(open(f'{MODEL_DIR}/movie_list.pkl', 'rb')))
+        movies = pd.DataFrame(
+            pickle.load(
+                open(
+                    f'{MODEL_DIR}/movie_list.pkl',
+                    'rb')))
         movies.reset_index(drop=True, inplace=True)
         similarity = pickle.load(open(f'{MODEL_DIR}/similarity.pkl', 'rb'))
-        movies['title_search'] = movies['title'].astype(str).str.replace(" ", "").str.strip().str.lower()
+        movies['title_search'] = movies['title'].astype(
+            str).str.replace(" ", "").str.strip().str.lower()
+
 
 def fetch_poster(movie_title):
     url = f"https://api.themoviedb.org/3/search/movie?api_key={API_KEY}&query={movie_title}"
@@ -28,9 +36,6 @@ def fetch_poster(movie_title):
         print(f"Error fetching poster: {e}")
     return "https://via.placeholder.com/500x750?text=No+Image"
 
-
-
-from urllib.parse import unquote
 
 def recommend(movie):
     load_models()

@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from recommender import recommend
-import os
 
 app = FastAPI()
 
@@ -13,9 +12,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 def home():
     return {"message": "Movie Recommendation API"}
+
 
 @app.get("/recommend/{movie}")
 def get_recommendations(movie: str):
